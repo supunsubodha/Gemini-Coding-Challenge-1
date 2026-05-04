@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 public class DatabaseConnecter {
 
     // Update the password to your MySQL root password
-    private static final String URL = "jdbc:mysql://localhost:3306/secure_vault";
+    private static final String URL = "jdbc:mysql://localhost:3306/secure_terminal";
     private static final String DB_USER = "subodha";
     private static final String DB_PASSWORD = "";
 
@@ -25,7 +25,7 @@ public class DatabaseConnecter {
             }
 
         } catch (Exception e) {
-            System.out.println("System Error: Could not connect to the vault database.");
+            System.out.println("System Error: Could not connect to the database.");
             e.printStackTrace();
         }
 

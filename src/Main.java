@@ -8,7 +8,20 @@ public class Main {
         System.out.println("---Welcome to the secure terminal program---");
         System.out.print("Please enter your username: ");
         String username = sc.nextLine();
-        System.out.print("Please enter your password: ");
-        String password = PasswordHash.generateSHA256Hash(sc.nextLine());
+        boolean login;
+        int attempts = 0;
+        do {
+            System.out.print("Please enter your password: ");
+            String password = PasswordHash.generateSHA256Hash(sc.nextLine());
+            if (attempts != 0){
+                System.out.println("Incorrect username or password. Please try again.");
+            } else if (attempts>5) {
+                System.out.println("Program will be suspend for security reasons.");
+                return;
+            }
+            login=DatabaseConnecter.verifyLogin(username, password);
+            attempts++;
+        }while (login==false);
+        System.out.println("Your password has been verified");
     }
 }
